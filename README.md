@@ -1,4 +1,5 @@
-Loan Approval Prediction
+**Loan Approval Prediction**
+
 Welcome to the Loan Approval Prediction project, a part of our final year research initiative. The primary goal of this project is to explore and apply research-driven techniques to build a real-world solution for the loan approval process.
 
 By leveraging cutting-edge data science methods and machine learning algorithms, we aimed to develop a system that can predict loan approvals with high accuracy, helping banks and financial institutions make faster and more reliable decisions. 
