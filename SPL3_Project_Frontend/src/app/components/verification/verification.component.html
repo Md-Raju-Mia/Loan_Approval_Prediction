@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Verify Your Email</h2>
+          <p class="text-center">
+            We've sent a 6-digit OTP to your email. Please enter it below to verify your account.
+          </p>
+
+          <!-- OTP Input -->
+          <div class="mb-3">
+            <label for="otp" class="form-label">Enter OTP</label>
+            <input
+              type="text"
+              id="otp"
+              class="form-control"
+              placeholder="Enter 6-digit OTP"
+              [(ngModel)]="otp"
+              name="otp"
+              maxlength="6"
+              required
+            />
+          </div>
+
+          <!-- Verify Button -->
+          <div class="d-grid">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              (click)="verifyOtp()"
+              [disabled]="!otp || otp.length !== 6"
+            >
+              Verify
+            </button>
+          </div>
+
+          <!-- Resend OTP Link -->
+          <div class="text-center mt-3">
+            <p>
+              Didn't receive the OTP?
+              <a href="#" class="text-decoration-none" (click)="resendOtp()">Resend OTP</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

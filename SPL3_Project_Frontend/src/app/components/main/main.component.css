@@ -1,0 +1,16 @@
+#main {
+    transition: margin-left .3s;
+    padding: 20px;
+    margin-left: 250px;
+  }
+  
+  #main.closed {
+    margin-left: 70px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #main {
+      margin-left: 70px;
+    }
+  }
+  

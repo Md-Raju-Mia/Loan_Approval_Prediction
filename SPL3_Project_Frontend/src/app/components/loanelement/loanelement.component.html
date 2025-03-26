@@ -1,0 +1,205 @@
+<div id="main">
+  <app-header></app-header>
+  <div class="row">
+    <h2 class="text-black mt-4">Loan Eligibility Prediction</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <form (ngSubmit)="onSubmit(loanForm)" #loanForm="ngForm">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group mt-3">
+              <label class="text-black" for="gender">Gender</label>
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="gender"
+                name="gender"
+                [(ngModel)]="formData.Gender"
+                required
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="married">Married</label>
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="married"
+                name="married"
+                [(ngModel)]="formData.Married"
+                required
+              >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="dependents">Dependents</label>
+              <input
+                type="text"
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="dependents"
+                name="dependents"
+                [(ngModel)]="formData.Dependents"
+                required
+              />
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="education">Education Level</label>
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="education"
+                name="education"
+                [(ngModel)]="formData.Education"
+                required
+              >
+                <option value="Graduate">Graduate</option>
+                <option value="Not Graduate">Not Graduate</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="selfEmployed">Self Employed?</label>
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="selfEmployed"
+                name="selfEmployed"
+                [(ngModel)]="formData.Self_Employed"
+                required
+              >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="applicantIncome"
+                >Applicant Income</label
+              >
+              <input
+                type="number"
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="applicantIncome"
+                name="applicantIncome"
+                [(ngModel)]="formData.ApplicantIncome"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group mt-3">
+              <label class="text-dark" for="coapplicantIncome"
+                >Coapplicant Income</label
+              >
+              <input
+                type="number"
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="coapplicantIncome"
+                name="coapplicantIncome"
+                [(ngModel)]="formData.CoapplicantIncome"
+                required
+              />
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="loanAmount">Loan Amount</label>
+              <input
+                type="number"
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="loanAmount"
+                name="loanAmount"
+                [(ngModel)]="formData.LoanAmount"
+                required
+              />
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="loanAmountTerm"
+                >Loan Amount Term</label
+              >
+              <input
+                type="number"
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="loanAmountTerm"
+                name="loanAmountTerm"
+                [(ngModel)]="formData.Loan_Amount_Term"
+                required
+              />
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="creditHistory"
+                >Credit History</label
+              >
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="creditHistory"
+                name="creditHistory"
+                [(ngModel)]="formData.Credit_History"
+                required
+              >
+                <option value="1">Good (1)</option>
+                <option value="0">Bad (0)</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label class="text-dark" for="propertyArea">Property Area</label>
+              <select
+                class="form-control bg-white text-dark border-2 border-dark-subtle"
+                id="propertyArea"
+                name="propertyArea"
+                [(ngModel)]="formData.Property_Area"
+                required
+              >
+                <option value="Urban">Urban</option>
+                <option value="Semiurban">Semiurban</option>
+                <option value="Rural">Rural</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success mt-4 border-2 border-black"
+        >
+          Predict Loan Eligibility
+        </button>
+      </form>
+    </div>
+    <div class="col-6">
+      <!-- Display Prediction Result -->
+      <div *ngIf="predictionResult" class="mt-4">
+        <h3>Prediction Result</h3>
+        <p>
+          <strong>Prediction:</strong>
+          {{ predictionResult.prediction }}
+        </p>
+        <p>
+          <strong>Probability:</strong>
+          {{ predictionResult.probability * 100 | number : "1.2-2" }}%
+        </p>
+      </div>
+
+      <!-- Visualizations -->
+      <div *ngIf="predictionResult" class="mt-4">
+        <h3>Visualizations</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Income Breakdown</h4>
+            <canvas #incomeChart></canvas>
+          </div>
+          <div class="col-md-6">
+            <h4>EMI Overview</h4>
+            <canvas #emiChart></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

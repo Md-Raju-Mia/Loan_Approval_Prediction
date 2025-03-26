@@ -1,0 +1,30 @@
+.card {
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .card-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .text-decoration-none {
+    color: #007bff;
+  }
+  
+  .text-decoration-none:hover {
+    text-decoration: underline;
+  }

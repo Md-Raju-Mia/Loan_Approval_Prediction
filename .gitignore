@@ -1,0 +1,4 @@
+# Angular/node files
+SPL3_Project_Frontend/node_modules/
+SPL3_Project_Frontend/dist/
+SPL3_Project_Frontend/.angular/cache

@@ -1,0 +1,127 @@
+<section class="background-radial-gradient min-vh-100 overflow-auto">
+  <div
+    class="container h-100 d-flex justify-content-center align-items-center py-5"
+  >
+    <div class="row justify-content-center align-items-center w-100">
+      <!-- Image Column -->
+      <div class="col-12 col-md-6 col-lg-5 text-center mb-4 mb-md-0">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid mt-3"
+          alt="Sample image"
+        />
+      </div>
+
+      <!-- Form Column -->
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5 position-relative">
+        <div
+          id="radius-shape-1"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-2"
+          class="position-absolute shadow-5-strong"
+        ></div>
+
+        <div class="card bg-glass px-4 px-lg-5 py-4 py-md-5">
+          <form>
+            <!-- Social Login -->
+            <div class="d-flex flex-column align-items-center">
+              <p class="lead fw-normal mb-3">Sign in with</p>
+              <div class="d-flex">
+                <button type="button" class="btn btn-primary btn-floating mx-2">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-floating mx-2">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button type="button" class="btn btn-primary btn-floating mx-2">
+                  <i class="fab fa-linkedin-in"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Or</p>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="email"
+                [(ngModel)]="email"
+                name="email"
+                class="form-control form-control-lg"
+                placeholder="Enter a valid email"
+                autocomplete="username"
+                required
+              />
+              <label class="form-label" for="email">Email address</label>
+              <div *ngIf="emailInvalid" class="text-danger small">
+                Please enter a valid email.
+              </div>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input
+                type="password"
+                id="password"
+                [(ngModel)]="password"
+                name="password"
+                class="form-control form-control-lg"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                required
+              />
+              <label class="form-label" for="password">Password</label>
+              <div *ngIf="passwordInvalid" class="text-danger small">
+                Password is required.
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  id="rememberMe"
+                  checked
+                />
+                <label class="form-check-label" for="rememberMe"
+                  >Remember me</label
+                >
+              </div>
+              <a href="#!" class="text-white text-decoration-none"
+                >Forgot password?</a
+              >
+            </div>
+
+            <!-- Login Button -->
+            <div class="text-center mt-4">
+              <button
+                type="button"
+                class="btn btn-primary btn-lg px-5"
+                (click)="login()"
+                [disabled]="!email || !password"
+              >
+                Login
+              </button>
+            </div>
+
+            <!-- Register Link -->
+            <div class="text-center mt-3">
+              <p class="small fw-bold">
+                Don't have an account?
+                <a class="link-danger" routerLink="/signup">Register</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
